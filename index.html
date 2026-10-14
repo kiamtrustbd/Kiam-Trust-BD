@@ -1,0 +1,496 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#102b23">
+<meta name="description" content="KIAM TRUST BD - কিচেন ও হোম অ্যাপ্লায়েন্স পণ্য দেখুন এবং অর্ডার করুন।">
+<title>KIAM TRUST BD | Smart Living</title>
+
+<style>
+:root {
+  --green: #102b23;
+  --gold: #d9b56d;
+  --cream: #f8f6f0;
+  --white: #ffffff;
+  --muted: #6d776f;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Arial, "Noto Sans Bengali", sans-serif;
+  background: var(--cream);
+  color: #202923;
+}
+button, input, select { font: inherit; }
+a { text-decoration: none; color: inherit; }
+.topbar {
+  background: var(--green);
+  color: white;
+  text-align: center;
+  padding: 9px;
+  font-size: 12px;
+  letter-spacing: .3px;
+}
+header {
+  background: var(--white);
+  padding: 15px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  border-bottom: 1px solid #e9e5da;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.logo {
+  color: var(--green);
+  font-weight: 900;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+.logo span { color: #b38b3e; }
+.tagline { font-size: 10px; letter-spacing: 2px; }
+nav { display: flex; gap: 20px; font-size: 13px; }
+nav a:hover { color: #a77b2e; }
+.hero {
+  background: linear-gradient(120deg, #102b23, #234b3c);
+  color: white;
+  padding: 55px 6%;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 25px;
+  align-items: center;
+  min-height: 350px;
+}
+.eyebrow {
+  color: var(--gold);
+  letter-spacing: 3px;
+  font-size: 11px;
+  font-weight: bold;
+}
+.hero h1 {
+  font-size: clamp(30px, 5vw, 52px);
+  line-height: 1.2;
+  margin: 16px 0;
+}
+.hero h1 span { color: var(--gold); }
+.hero p {
+  color: #e0e7e1;
+  line-height: 1.8;
+  font-size: 14px;
+  max-width: 460px;
+}
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  border: 0;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+}
+.btn-gold { background: var(--gold); color: #18291f; }
+.btn-light { border: 1px solid #d9b56d; color: white; }
+.hero img {
+  width: 100%;
+  max-height: 290px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+.section { padding: 42px 5%; }
+.section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+.section h2 { margin: 0 0 8px; color: var(--green); }
+.section-head p { color: var(--muted); font-size: 13px; margin: 0; }
+.categories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.category {
+  background: white;
+  padding: 20px 8px;
+  text-align: center;
+  border: 1px solid #eee9dd;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.category .emoji { font-size: 28px; }
+.category h3 { font-size: 13px; margin: 10px 0 0; }
+.category:hover { border-color: var(--gold); }
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.product {
+  background: white;
+  border: 1px solid #eee9df;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.product img {
+  width: 100%;
+  height: 190px;
+  object-fit: contain;
+  padding: 12px;
+  background: #fff;
+}
+.product-info { padding: 15px; flex: 1; }
+.product-info small { color: #8d7548; }
+.product h3 { font-size: 15px; margin: 8px 0; }
+.product p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.price { color: var(--green); font-size: 19px; font-weight: 800; }
+.product-actions { display: flex; gap: 8px; margin-top: 12px; }
+.product-actions button {
+  flex: 1;
+  padding: 10px 4px;
+  font-size: 12px;
+}
+.btn-green { background: var(--green); color: white; }
+.search {
+  width: 100%;
+  max-width: 300px;
+  padding: 11px;
+  border: 1px solid #ddd7ca;
+  border-radius: 5px;
+  background: white;
+}
+.features {
+  background: #eeeade;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 28px 5%;
+  text-align: center;
+}
+.features strong { color: var(--green); font-size: 14px; }
+.features p { color: var(--muted); font-size: 12px; line-height: 1.6; }
+.contact {
+  background: white;
+  margin: 35px 5%;
+  padding: 28px;
+  border-radius: 8px;
+  text-align: center;
+}
+footer {
+  background: var(--green);
+  color: white;
+  padding: 32px 5%;
+  text-align: center;
+}
+footer p { font-size: 12px; color: #d4ded6; line-height: 1.8; }
+footer .logo { color: white; }
+.whatsapp {
+  position: fixed;
+  right: 17px;
+  bottom: 18px;
+  background: #168b52;
+  color: white;
+  border-radius: 30px;
+  padding: 13px 17px;
+  z-index: 20;
+  box-shadow: 0 4px 15px #0003;
+  font-size: 13px;
+  font-weight: bold;
+}
+.empty { grid-column: 1 / -1; text-align: center; padding: 30px; }
+@media (max-width: 650px) {
+  header { padding: 12px 4%; flex-wrap: wrap; }
+  .logo { font-size: 19px; }
+  nav { width: 100%; justify-content: space-between; gap: 8px; }
+  .hero { grid-template-columns: 1fr; padding: 38px 6%; }
+  .hero img { max-height: 200px; }
+  .section { padding: 32px 4%; }
+  .categories { grid-template-columns: repeat(2, 1fr); }
+  .products { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .product img { height: 135px; }
+  .product-info { padding: 10px; }
+  .product h3 { font-size: 13px; }
+  .price { font-size: 16px; }
+  .product-actions { flex-direction: column; }
+  .section-head { align-items: start; flex-direction: column; }
+  .search { max-width: none; }
+  .features { gap: 8px; padding: 22px 3%; }
+  .features strong { font-size: 12px; }
+  .features p { font-size: 10px; }
+}
+</style>
+</head>
+
+<body>
+<div class="topbar">
+  KIAM TRUST BD — আপনার ঘরের বিশ্বস্ত পছন্দ
+</div>
+
+<header>
+  <a class="brand" href="#">
+    <div class="logo">KIAM <span>TRUST BD</span></div>
+    <div class="tagline">SMART LIVING • BETTER CHOICE</div>
+  </a>
+  <nav>
+    <a href="#">হোম</a>
+    <a href="#categories">ক্যাটাগরি</a>
+    <a href="#products">পণ্য</a>
+    <a href="#contact">যোগাযোগ</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div>
+    <div class="eyebrow">WELCOME TO KIAM TRUST BD</div>
+    <h1>আপনার ঘর হোক<br><span>আরও সুন্দর</span></h1>
+    <p>
+      দৈনন্দিন জীবনের প্রয়োজনীয় কিচেন ও হোম অ্যাপ্লায়েন্স
+      পণ্য খুঁজে নিন এক জায়গায়। আপনার পছন্দের পণ্য দেখুন
+      এবং অর্ডারের জন্য যোগাযোগ করুন।
+    </p>
+    <a class="btn btn-gold" href="#products">পণ্য দেখুন →</a>
+    <a class="btn btn-light" href="#contact">যোগাযোগ</a>
+  </div>
+  <img
+    src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=900&q=80"
+    alt="Modern kitchen"
+  >
+</section>
+
+<section class="section" id="categories">
+  <div class="section-head">
+    <div>
+      <h2>পণ্যের ক্যাটাগরি</h2>
+      <p>আপনার প্রয়োজন অনুযায়ী পণ্য বেছে নিন</p>
+    </div>
+  </div>
+
+  <div class="categories">
+    <button class="category" onclick="filterCategory('রান্নাঘর')">
+      <div class="emoji">🍳</div>
+      <h3>কুকওয়্যার</h3>
+    </button>
+    <button class="category" onclick="filterCategory('রান্নাঘর')">
+      <div class="emoji">🍚</div>
+      <h3>রাইস কুকার</h3>
+    </button>
+    <button class="category" onclick="filterCategory('অ্যাপ্লায়েন্স')">
+      <div class="emoji">⚡</div>
+      <h3>কিচেন অ্যাপ্লায়েন্স</h3>
+    </button>
+    <button class="category" onclick="filterCategory('সব')">
+      <div class="emoji">🛍️</div>
+      <h3>সব পণ্য</h3>
+    </button>
+  </div>
+</section>
+
+<section class="section" id="products">
+  <div class="section-head">
+    <div>
+      <h2>আমাদের পণ্য</h2>
+      <p>আপনার পছন্দের পণ্য খুঁজে নিন</p>
+    </div>
+    <input
+      class="search"
+      id="search"
+      type="search"
+      placeholder="পণ্যের নাম লিখুন..."
+      oninput="renderProducts()"
+    >
+  </div>
+  <div class="products" id="productList"></div>
+</section>
+
+<section class="features">
+  <div>
+    <strong>✦ মানসম্মত পণ্য</strong>
+    <p>পণ্যের বিবরণ যাচাই করে কিনুন</p>
+  </div>
+  <div>
+    <strong>✦ সহজ অর্ডার</strong>
+    <p>WhatsApp-এ যোগাযোগ করুন</p>
+  </div>
+  <div>
+    <strong>✦ ক্রেতার সেবা</strong>
+    <p>পণ্য সম্পর্কে বিস্তারিত জেনে নিন</p>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2>আমাদের সঙ্গে যোগাযোগ করুন</h2>
+  <p>পণ্যের দাম, স্টক ও অর্ডারের তথ্য জানতে যোগাযোগ করুন।</p>
+  <a class="btn btn-green" id="contactBtn" href="#" target="_blank">
+    WhatsApp-এ যোগাযোগ করুন
+  </a>
+</section>
+</main>
+
+<footer>
+  <div class="logo">KIAM <span>TRUST BD</span></div>
+  <p>আপনার ঘরের প্রয়োজনীয় পণ্যের বিশ্বস্ত ঠিকানা</p>
+  <p>পণ্যের মূল্য ও প্রাপ্যতা অর্ডারের আগে নিশ্চিত করুন।</p>
+  <p>© <span id="year"></span> KIAM TRUST BD. All rights reserved.</p>
+</footer>
+
+<a class="whatsapp" id="floatingWA" href="#" target="_blank">
+  ☎ WhatsApp
+</a>
+
+<script>
+// নিজের সক্রিয় WhatsApp নম্বর বসাও।
+// বাংলাদেশের নম্বরের শুরুতে 880 ব্যবহার করবে,
+// + চিহ্ন বা স্পেস দেবে না।
+const WHATSAPP_NUMBER = "8801XXXXXXXXX";
+
+// নমুনা পণ্য: সঠিক দাম ও আসল ছবির লিংক পরে বসাবে।
+const products = [
+  {
+    name: "KIAM রাইস কুকার",
+    category: "অ্যাপ্লায়েন্স",
+    price: 0,
+    label: "RICE COOKER",
+    desc: "মডেল, ধারণক্ষমতা ও দাম নিশ্চিত করে নিন।",
+    image: "https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    name: "KIAM কুকওয়্যার",
+    category: "রান্নাঘর",
+    price: 0,
+    label: "COOKWARE",
+    desc: "উপাদান, সাইজ ও মূল্য জেনে অর্ডার করুন।",
+    image: "https://images.unsplash.com/photo-1584990347449-a8b4f4a4e9a7?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    name: "KIAM সসপ্যান",
+    category: "রান্নাঘর",
+    price: 0,
+    label: "SAUCEPAN",
+    desc: "মডেল ও পণ্যের বিবরণ যাচাই করুন।",
+    image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    name: "KIAM কিচেন অ্যাপ্লায়েন্স",
+    category: "অ্যাপ্লায়েন্স",
+    price: 0,
+    label: "KITCHEN",
+    desc: "পণ্যের প্রাপ্যতা জানতে যোগাযোগ করুন।",
+    image: "https://images.unsplash.com/photo-1556911261-6bd341186b2f?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    name: "KIAM কিচেন পট",
+    category: "রান্নাঘর",
+    price: 0,
+    label: "KITCHEN POT",
+    desc: "আসল মডেল ও দাম নিশ্চিত করে নিন।",
+    image: "https://images.unsplash.com/photo-1584738766473-61c083514bf4?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    name: "KIAM হোম কালেকশন",
+    category: "অ্যাপ্লায়েন্স",
+    price: 0,
+    label: "HOME COLLECTION",
+    desc: "পছন্দের পণ্য সম্পর্কে বিস্তারিত জানতে চান।",
+    image: "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=600&q=80"
+  }
+];
+
+let currentCategory = "সব";
+
+function formatPrice(price) {
+  return price > 0
+    ? "৳" + price.toLocaleString("en-IN")
+    : "দাম জানতে যোগাযোগ করুন";
+}
+
+function orderProduct(name) {
+  if (WHATSAPP_NUMBER.includes("X")) {
+    alert("প্রথমে কোডের WHATSAPP_NUMBER-এ নিজের WhatsApp নম্বর বসাও।");
+    return;
+  }
+
+  const message = "আসসালামু আলাইকুম, KIAM TRUST BD ওয়েবসাইট থেকে " +
+    name + " পণ্যটির দাম ও বিস্তারিত জানতে চাই।";
+
+  const url = "https://wa.me/" + WHATSAPP_NUMBER +
+    "?text=" + encodeURIComponent(message);
+
+  window.open(url, "_blank");
+}
+
+function filterCategory(category) {
+  currentCategory = category;
+  document.getElementById("products").scrollIntoView();
+  renderProducts();
+}
+
+function renderProducts() {
+  const query = document.getElementById("search").value
+    .trim().toLowerCase();
+
+  const filtered = products.filter(p => {
+    const matchCategory =
+      currentCategory === "সব" || p.category === currentCategory;
+    const matchQuery =
+      (p.name + " " + p.category + " " + p.label)
+        .toLowerCase().includes(query);
+
+    return matchCategory && matchQuery;
+  });
+
+  const list = document.getElementById("productList");
+
+  if (!filtered.length) {
+    list.innerHTML = '<div class="empty">কোনো পণ্য পাওয়া যায়নি।</div>';
+    return;
+  }
+
+  list.innerHTML = filtered.map(p => `
+    <article class="product">
+      <img src="${p.image}" alt="${p.name}" loading="lazy"
+           onerror="this.style.display='none'">
+      <div class="product-info">
+        <small>${p.label}</small>
+        <h3>${p.name}</h3>
+        <p>${p.desc}</p>
+        <div class="price">${formatPrice(p.price)}</div>
+        <div class="product-actions">
+          <button class="btn btn-green"
+            onclick="orderProduct('${p.name}')">
+            অর্ডার / দাম
+          </button>
+        </div>
+      </div>
+    </article>
+  `).join("");
+}
+
+function setupContact() {
+  const url = WHATSAPP_NUMBER.includes("X")
+    ? "#contact"
+    : "https://wa.me/" + WHATSAPP_NUMBER;
+
+  document.getElementById("contactBtn").href = url;
+  document.getElementById("floatingWA").href = url;
+}
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+renderProducts();
+setupContact();
+</script>
+</body>
+</html>
